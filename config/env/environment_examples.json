@@ -1,0 +1,57 @@
+[
+  {"name": "IXIA", "entry_type": "tg", "instance_type": "ixiahl", "id": "03", "ip_host": "X.X.X.X",
+        "kprio": 200, "sprio": 200, "cprio": 200, "tprio": 200,
+        "ports": [[1, 1, 1], [1, 1, 2]]},
+
+  {"name": "collectd_server", "entry_type": "settings", "instance_type": "collectd_settings", "id": "994",
+        "ip_host": "X.X.X.X", "ip_port": 22, "username": "user", "password": "password"},
+
+  {"name": "std_syslog_settings", "entry_type": "settings", "instance_type": "syslog_settings", "id": "4",
+        "ip": "X.X.X.X", "proto": "Udp", "port": 514, "localport": 514, "transport": "Tcp", "facility": -1,
+        "severity": "Debug",
+        "syslog_usr": "user", "syslog_passw": "password", "path_to_log": "/var/log/switches/"},
+
+  {"name": "Zero Cross", "entry_type": "cross", "instance_type": "static_ons", "id": "5",
+        "kprio": 10, "sprio": 300, "cprio": 300, "tprio": 300},
+
+  {"name": "loghost", "entry_type": "settings", "instance_type": "settings", "id": "156",
+        "ip_host": "X.X.X.X", "sshtun_port": 22, "sshtun_user": "loguser", "sshtun_pass": "password"},
+
+  {"name": "simswitch1_lxc", "entry_type": "switch", "instance_type": "lxc", "id": "16",
+        "ip_host": "X.X.X.X", "ip_port": "8081", "ports_count": 32,
+        "cli_user": "lxc_user", "cli_user_passw": "password", "cli_user_prompt": "Switch ",
+        "cli_img_path": "usr/lib/ons/cli_img/",
+        "ports": [1, 2, 3, 12, 5, 6, 7, 8, 9, 10, 11, 4, 13, 14, 15, 16, 17, 18, 19,
+            20, 21, 22, 23, 24],
+        "related_id": ["6"]},
+
+  {"name": "seacliff_name", "entry_type": "switch", "instance_type": "seacliff", "id": "10", "kprio": 100,
+        "ip_host": "X.X.X.X", "ip_port": "8081",
+        "use_sshtun": 1, "sshtun_user": "user", "sshtun_pass": "password", "sshtun_port": 22,
+        "default_gw": "X.X.X.X", "net_mask": "255.255.255.0",
+        "ports_count": 52, "pwboard_host": "X.X.X.X", "pwboard_port": "23", "halt": 0,
+        "use_serial": false,
+        "portserv_host": "X.X.X.X", "portserv_user": "user", "portserv_pass": "password", "portserv_tty": 6,
+        "portserv_port": 2501,
+        "telnet_loginprompt": "localhost login:", "telnet_passprompt": "Password:",
+        "telnet_user": "user", "telnet_pass": "password", "telnet_prompt": "[user@localhost ~]$",
+        "cli_user": "user", "cli_user_passw": "password", "cli_user_prompt": "Switch ",
+        "ports": [1,2,3,4,5],
+        "related_id": ["4", "156", "1510"]},
+
+  {"name": "rr_name", "entry_type": "switch", "instance_type": "rr", "id": "4701", "kprio": 100,
+        "ip_host": "X.X.X.X", "ip_port": "8081",
+        "use_sshtun": 1, "sshtun_user": "root", "sshtun_pass": "password", "sshtun_port": 22,
+        "default_gw": "X.X.X.X", "net_mask": "255.255.254.0",
+        "ports_count": 26, "pwboard_host": "X.X.X.X", "pwboard_port": "2", "halt": 0,
+        "pwboard_snmp_rw_community_string": "private",
+        "use_serial": false,
+        "portserv_host": "X.X.X.X", "portserv_user": "user", "portserv_pass": "password", "portserv_tty": 15,
+        "portserv_port": 2501,
+        "telnet_loginprompt": "localhost login:", "telnet_passprompt": "Password:",
+        "telnet_user": "root", "telnet_pass": "password", "telnet_prompt": "[root@",
+        "cli_user": "root", "cli_user_passw": "password", "cli_user_prompt": "[root@",
+        "ports": [1, 2, 3, 4, 5],
+        "ports_map": [[1, [1, 2, 3, 4]], [5, [5, 6, 7, 8]]],
+        "related_id": ["4","156"]}
+]
