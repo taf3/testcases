@@ -31,7 +31,10 @@ from testlib import helpers
 
 def pytest_generate_tests(metafunc):
     """Py.test hook that generates test items based on type of PFC configuration on device"""
-    type_of_pfc_config = metafunc.config.env.switch[1].hw.SUPPORTED_PFC_CONFIGURATION.PFC_TYPE_CONFIGURATION
+    try:
+        type_of_pfc_config = metafunc.config.env.switch[1].hw.SUPPORTED_PFC_CONFIGURATION.PFC_TYPE_CONFIGURATION
+    except KeyError:
+        type_of_pfc_config = None
     if type_of_pfc_config == 1:
         argvalue = ['Dcbx']
     elif type_of_pfc_config == 2:
