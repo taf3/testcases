@@ -1,3 +1,14 @@
+The **TAF3** framework is supposed to be used in Linux systems which have Python and all necessary libraries installed. Using the TAF3 you may run testing suites in different environments (real and simulated) and get clear and detailed reports.
+A subset of the available cases are used for regression testing internally by the development team. The configuration files are automatically downloaded and executed. Any changes in the output of the specified test cases are immediately reported to the developers.
+
+**TAF3** provides considerable flexibility in how you can organize your test cases. All test cases are parametrized in a way that they have access to 'env' object which is built from environment description. You just need to describe in your ‘conftest.py’ file and test which methods and in which order should be called on different stages of test execution.
+For example typical 'env' object contains already initialized switch(es), traffic generator and cross connection tool. Often, you will find a test case that is similar to your problem of interest, and the available configuration files can be modified to suit your needs.
+
+## Typical environment - overview
+
+* Simulated for L2/L3 testing
+* Real devices with IXIA, TRex as a traffic generators
+
 ## Directory Structure
 
 The current implementation of the testing framework has the following directory structure of testcases repository (only high-level directories are shown):
@@ -13,9 +24,9 @@ The current implementation of the testing framework has the following directory 
 ## Config
 
 * **env** –  identify devices, setting  environment option. Environment config describes all allowed devices for setups. Which devices will be used in current run is defined in the setup configuration.
-* **setup**  –  define environment configuration, senvironment setup option. The env part is a list of devices in the current setup. The cross part is a dictionary with cross ids as the keys and the appropriate list of connections as values.
+* **setup**  –  define environment configuration, environment setup option. The env part is a list of devices in the current setup. The cross part is a dictionary with cross ids as the keys and the appropriate list of connections as values.
 
-All configs must be placed in `<tests_root>/config/<env|setup>` directory.
+All configurations must be placed in `<tests_root>/config/<env|setup>` directory.
 
 More detail about **setup** and **environment** configuration can be found by the following link: [Setup and Environment config ](https://github.com/IBarna/Create-docs-TAF/wiki/3.-Test-execution-preconfiguration)
 
@@ -30,6 +41,7 @@ A list of high level samples for a General testing:
 * Wrappers for negative scenarios.
 * TG operations (configure traffic, start capture, send traffic, get statistics, fragmentation).
 * IxNetwork configuration (iface, traffic, LACP, OSPF, BGP).
+* Simple Linux host configuration (get_current_date, cli_send_command methods).
 
 ### LAYER 2 PROTOCOLS:
 ***
